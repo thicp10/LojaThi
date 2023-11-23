@@ -1,23 +1,26 @@
 package com.lojathi.lojathi.entities;
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "tb_users")
 public class User implements Serializable {
-
-    Integer id;
-     String name;
-     String email;
-
-    String telefone;
-
-    String password;
-
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String email;
+    private String telefone;
+    private String password;
     public User(){
 
     }
 
-    public User(Integer id, String name, String email, String telefone, String password) {
+    public User(Long id, String name, String email, String telefone, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -25,11 +28,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
